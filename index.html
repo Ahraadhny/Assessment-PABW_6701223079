@@ -23,5 +23,22 @@
     </div>
 </div>
 
+<!-- Form Peminjaman Buku -->
+<div id="form-peminjaman" class="bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Peminjaman Buku</h2>
+    <div class="mb-4">
+        <label for="jumlah" class="block text-lg font-bold mb-2">Jumlah:</label>
+        <input type="text" id="jumlah" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+    </div>
+    <div class="mb-4">
+        <label for="buku" class="block text-lg font-bold mb-2">Pilih Buku:</label>
+        <select id="buku" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+            <option value="sherlock">Sherlock</option>
+            <option value="lupin">Lupin</option>
+            <option value="aladin">Aladin</option>
+        </select>
+    </div>
+    <button onclick="pinjamBuku()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Pinjam Buku</button>
+</div>
 </body>
 </html>
