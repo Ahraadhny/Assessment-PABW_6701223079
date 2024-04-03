@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profil Anda</title>
+<title>Profil dan Peminjaman Buku</title>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 <style>
     /* Custom CSS dapat ditambahkan di sini */
@@ -17,54 +17,64 @@
     <div id="profil" class="bg-white p-8 rounded-lg shadow-md mb-8 text-center">
         <h1 class="text-2xl font-bold mb-4">Profil Saya</h1>
         <img src="image/WhatsApp Image 2024-03-25 at 16.17.59_3ff36e4b.jpg" alt="Foto Anda" class="rounded-full mx-auto mb-4" style="width: auto; height: 200px;">
-        <p id="nama" class="text-lg"><strong>Nama:</strong> Azzahra Dhanindya Yuma Bachtar</p>
-        <p id="nim" class="text-lg"><strong>NIM:</strong> 6701223079</p>
-        <p id="kelas" class="text-lg"><strong>Kelas:</strong> D3SI 46-04</p>
+        <p id="nama" class="text-lg"><strong>Nama:</strong> Your Name</p>
+        <p id="nim" class="text-lg"><strong>NIM:</strong> Your NIM</p>
+        <p id="kelas" class="text-lg"><strong>Kelas:</strong> Your Class</p>
     </div>
-</div>
 
-<!-- Form Peminjaman Buku -->
-<div id="form-peminjaman" class="bg-white p-8 rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-4">Peminjaman Buku</h2>
-    <div class="mb-4">
-        <label for="jumlah" class="block text-lg font-bold mb-2">Jumlah:</label>
-        <input type="text" id="jumlah" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+    <!-- Form Peminjaman Buku -->
+    <div id="form-peminjaman" class="bg-white p-8 rounded-lg shadow-md">
+        <h2 class="text-2xl font-bold mb-4">Peminjaman Buku</h2>
+        <div class="mb-4">
+            <label for="jumlah" class="block text-lg font-bold mb-2">Jumlah:</label>
+            <input type="text" id="jumlah" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+        </div>
+        <div class="mb-4">
+            <label for="buku" class="block text-lg font-bold mb-2">Pilih Buku:</label>
+            <select id="buku" class="border border-gray-300 px-4 py-2 rounded-md w-full">
+                <option value="sherlock">Sherlock</option>
+                <option value="lupin">Lupin</option>
+                <option value="aladin">Aladin</option>
+            </select>
+        </div>
+        <button onclick="pinjamBuku()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Pinjam Buku</button>
     </div>
-    <div class="mb-4">
-        <label for="buku" class="block text-lg font-bold mb-2">Pilih Buku:</label>
-        <select id="buku" class="border border-gray-300 px-4 py-2 rounded-md w-full">
-            <option value="sherlock">Sherlock</option>
-            <option value="lupin">Lupin</option>
-            <option value="aladin">Aladin</option>
-        </select>
-    </div>
-    <button onclick="pinjamBuku()" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Pinjam Buku</button>
-</div>
-</body>
-<script>
-    let buku = [
+
+    <!-- JavaScript untuk mengisi informasi profil, mengambil nilai, dan array buku -->
+    <script>
+        // Ganti informasi dengan data Anda
+        document.getElementById("nama").innerText = "Nama: Your Name";
+        document.getElementById("nim").innerText = "NIM: Your NIM";
+        document.getElementById("kelas").innerText = "Kelas: Your Class";
+
+        // Array buku
+        let buku = [
             {"nama": "sherlock", "jumlah":2},
             {"nama": "lupin", "jumlah":2},
             {"nama": "aladin", "jumlah":2}
         ];
 
-    function pinjamBuku() {
-        var jumlah = document.getElementById("jumlah").value;
-        var buku = document.getElementById("buku").value;
+        // Fungsi untuk memeriksa input teks dan meminjam buku
+        function pinjamBuku() {
+            var jumlah = document.getElementById("jumlah").value;
+            var bukuYangDipilih = document.getElementById("buku").value;
 
-        console.log("Jumlah: " + jumlah);
-        console.log("Buku: " + buku);
-
-        if (jumlah === "") {
+            if (jumlah === "") {
                 alert("Input jumlah tidak boleh kosong!");
                 return;
             }
 
-        var bukuDitemukan = false;
+            var bukuDitemukan = false;
             for (var i = 0; i < buku.length; i++) {
                 if (buku[i].nama === bukuYangDipilih) {
                     bukuDitemukan = true;
-                    break;
+                    if (parseInt(jumlah) > buku[i].jumlah) {
+                        alert("Jumlah buku tidak tersedia!");
+                        return;
+                    } else {
+                        alert("Silahkan ambil buku anda");
+                        return;
+                    }
                 }
             }
 
@@ -72,20 +82,10 @@
                 alert("Buku tidak ditemukan!");
                 return;
             }
+        }
+    </script>
 
-            if (bukuDitemukan) {
-                for (var i = 0; i < buku.length; i++) {
-                    if (buku[i].nama === bukuYangDipilih) {
-                        if (parseInt(jumlah) > buku[i].jumlah) {
-                            alert("Jumlah buku tidak tersedia!");
-                            return;
-                        } else {
-                            alert("Silahkan ambil buku anda");
-                            return;
-                        }
-                    }
-                }
-            }
-    }git
-</script>
+</div>
+
+</body>
 </html>
