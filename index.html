@@ -67,11 +67,25 @@
                     break;
                 }
             }
-            
+
             if (!bukuDitemukan) {
                 alert("Buku tidak ditemukan!");
                 return;
             }
-    }
+
+            if (bukuDitemukan) {
+                for (var i = 0; i < buku.length; i++) {
+                    if (buku[i].nama === bukuYangDipilih) {
+                        if (parseInt(jumlah) > buku[i].jumlah) {
+                            alert("Jumlah buku tidak tersedia!");
+                            return;
+                        } else {
+                            alert("Silahkan ambil buku anda");
+                            return;
+                        }
+                    }
+                }
+            }
+    }git
 </script>
 </html>
